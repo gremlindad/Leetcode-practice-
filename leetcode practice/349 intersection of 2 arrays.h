@@ -1,9 +1,13 @@
 #pragma once
 #include<vector>
-#include<iostream>
-#include<string>
 
 using namespace std;
+
+
+
+
+vector<int> v1_349 = { 1,2,3,4,5,6,6,7,7,8,6,3,2,1,10};
+vector<int> v2_349 = { 2,2,4,5,10 };
 
 
 vector<int> mySort(vector<int> v);
