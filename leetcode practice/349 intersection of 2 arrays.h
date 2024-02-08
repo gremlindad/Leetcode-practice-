@@ -1,13 +1,16 @@
 #pragma once
 #include<vector>
+#include<unordered_set>
 
 using namespace std;
 
 
-
-
+//TEST CASE
 vector<int> v1_349 = { 1,2,3,4,5,6,6,7,7,8,6,3,2,1,10};
 vector<int> v2_349 = { 2,2,4,5,10 };
+
+
+//VERSION 1
 
 
 vector<int> mySort(vector<int> v);
@@ -100,4 +103,38 @@ bool myBinSearch(int num, const vector<int>& nums) {
     }
     //if we didnt find it
     return false;
+}
+
+
+////////////////////////
+//VERSION 2
+
+vector<int> intersectionV2(vector<int>& nums1, vector<int>& nums2) {
+
+    //use an unordered set as it only stores unique values by default
+    auto num1_unique = unordered_set<int>();
+
+
+    //iterate and add values from nums1
+    for (auto& num : nums1) {
+        num1_unique.insert(num);
+    }
+
+    //do it again for nums to but this time only add common values with nums1
+    auto intersecting_elements = unordered_set<int>();
+
+    for (auto& num : nums2) {
+        if (num1_unique.find(num) != num1_unique.end()) {
+            intersecting_elements.insert(num);
+        }
+    }
+
+    vector<int> output;
+
+    //then add these values to a vector and return
+    for (auto& num : intersecting_elements) {
+        output.push_back(num);
+    }
+
+    return output;
 }
